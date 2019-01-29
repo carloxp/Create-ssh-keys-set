@@ -17,12 +17,14 @@ if [ ! -d ${location} ]; then
   mkdir ${location}
 fi
 
-# Typically you set the permissions to be:
-# .ssh directory:             700 (drwx------)
-# public key (.pub file):     644 (-rw-r--r--)
-# private key (id_rsa):       600 (-rw-------)
+# Memo: typically we set the permissions to be:
+# /root/.ssh directory:          700 (drwx------)
+# public key (ex.: .pub file):   644 (-rw-r--r--)
+# private key (ex.: id_rsa):     600 (-rw-------)
 # Your home directory should not be writeable by
 # the group or others (at most 755 (drwxr-xr-x)).
+
+# set right permissons to .ssh directory
 chmod 700 ${location} # drwx------
 
 # create authorized_keys and authorized_keys2 if don't exist
@@ -32,6 +34,7 @@ fi
 if [ ! -e ${location}/authorized_keys2 ]; then
   touch ${location}/authorized_keys2
 fi
+# set right permissons
 chmod 600 ${location}/authorized_keys
 chmod 600 ${location}/authorized_keys2
 
